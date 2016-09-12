@@ -10,40 +10,12 @@ $(document).ready(function() {
 		$('#body > div').removeClass('Xclick');
 		$('#body > div').removeClass('Oclick');
 		$('#body > div').removeClass('nonclickable');
-		$('#body > div').on('click');
+		$('#body > div').off('click');
+		$('#body > div').on('click', squareClick);
 		clicks = 0;
 	});
 
-	$('#body > div').click(function(e) {
-		e.stopPropagation();
-		clicks++;
-
-		if(clicks % 2 == 0) {
-			console.log('X');
-			console.log("It is O player's turn.");
-			$('#body').find('p').text("It is O player's turn.");
-			$(this).find('h1').text('X');
-			$(this).addClass('Xclick');
-			isWinner();
-		}
-		else {
-			console.log('O');
-			console.log("It is X player's turn.");
-			$('#body').find('p').text("It is X player's turn.");
-			$(this).find('h1').text('O');
-			$(this).addClass('Oclick');
-			isWinner();
-		}
-
-		$(this).off('click');
-		
-		/*Example code for doing it via CSS*/
-		$(this).removeClass('clickable');
-		$(this).addClass('nonclickable');
-	
-
-		console.log(clicks);
-	});
+	$('#body > div').click(squareClick);
 
 	$('#body').on('click', '.nonclickable', function() {
 		console.log('You cannot click here');
@@ -74,4 +46,38 @@ function isWinner() {
 			console.log('Tic Tac Toe! X Player wins!');
 		$('#body').find('p').text("TIC TAC TOE! X PLAYER WINS!");
 		}
+		else if (clicks === 9) {
+			console.log('Oh wow, we have a DRAW!');
+		$('#body').find('p').text("Oh wow, we have a DRAW!");
+		}
+}
+
+function squareClick(e) {
+		e.stopPropagation();
+		clicks++;
+
+		if(clicks % 2 == 0) {
+			console.log('X');
+			console.log("It is O player's turn.");
+			$('#body').find('p').text("It is O player's turn.");
+			$(this).find('h1').text('X');
+			$(this).addClass('Xclick');
+			isWinner();
+		}
+		else {
+			console.log('O');
+			console.log("It is X player's turn.");
+			$('#body').find('p').text("It is X player's turn.");
+			$(this).find('h1').text('O');
+			$(this).addClass('Oclick');
+			isWinner();
+		}
+
+		$(this).off('click');
+		
+		/*Example code for doing it via CSS*/
+		$(this).addClass('nonclickable');
+	
+
+		console.log(clicks);
 }
