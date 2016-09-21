@@ -23,6 +23,7 @@ $(document).ready(function() {
 
 });
 
+//Function for determining if player is winner based on clicked boxes.
 function isWinner() {
 		if ($('.square1').hasClass('Oclick') && $('.square2').hasClass('Oclick') && $('.square3').hasClass('Oclick') ||
 			$('.square4').hasClass('Oclick') && $('.square5').hasClass('Oclick') && $('.square6').hasClass('Oclick') ||
@@ -60,6 +61,7 @@ function isWinner() {
 		}
 }
 
+//Function to determine when it is X or O player's turn.
 function squareClick(e) {
 		e.stopPropagation();
 		clicks++;
