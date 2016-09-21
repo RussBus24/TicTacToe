@@ -34,6 +34,10 @@ function isWinner() {
 			$('.square3').hasClass('Oclick') && $('.square5').hasClass('Oclick') && $('.square7').hasClass('Oclick')) {
 			console.log('Tic Tac Toe! O Player wins!');
 			$('#body').find('p').text("TIC TAC TOE! O PLAYER WINS!");
+			$('#body > div').off('click');
+			$('#body > div').on('click', function () {
+				alert('Click Start Over to begin a new game.');
+			});
 		}
 		else if ($('.square1').hasClass('Xclick') && $('.square2').hasClass('Xclick') && $('.square3').hasClass('Xclick') ||
 			$('.square4').hasClass('Xclick') && $('.square5').hasClass('Xclick') && $('.square6').hasClass('Xclick') ||
@@ -44,7 +48,11 @@ function isWinner() {
 			$('.square1').hasClass('Xclick') && $('.square5').hasClass('Xclick') && $('.square9').hasClass('Xclick') ||
 			$('.square3').hasClass('Xclick') && $('.square5').hasClass('Xclick') && $('.square7').hasClass('Xclick')) {
 			console.log('Tic Tac Toe! X Player wins!');
-		$('#body').find('p').text("TIC TAC TOE! X PLAYER WINS!");
+			$('#body').find('p').text("TIC TAC TOE! X PLAYER WINS!");
+			$('#body > div').off('click');
+			$('#body > div').on('click', function () {
+				alert('Click Start Over to begin a new game.');
+			});
 		}
 		else if (clicks === 9) {
 			console.log('Oh wow, we have a DRAW!');
